@@ -1,0 +1,335 @@
+/* ==========================================================================
+   VARIÁVEIS DE CONFIGURAÇÃO (Fácil Customização)
+   ========================================================================== */
+:root {
+    /* Paleta de Cores Obrigatória */
+    --color-azul-profundo: #0a192f;
+    --color-azul-metalico: #172a45;
+    --color-azul-celeste: #30b0f0;
+    --color-verde-sustentavel: #10b981;
+    --color-amarelo-ouro: #f59e0b;
+    --color-branco: #ffffff;
+    --color-preto: #020617;
+    
+    /* Tons de cinza para suporte de contraste */
+    --color-cinza-claro: #f8fafc;
+    --color-cinza-texto: #475569;
+    --color-cinza-borda: #cbd5e1;
+
+    /* Variáveis do Tema Dinâmico (Padrão Light) */
+    --bg-body: var(--color-cinza-claro);
+    --bg-card: var(--color-branco);
+    --text-primary: var(--color-preto);
+    --text-secondary: var(--color-cinza-texto);
+    --border-color: var(--color-cinza-borda);
+
+    /* Tipografia e Layout base */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --radius-padrao: 12px;
+    --shadow-suave: 0 10px 30px -15px rgba(2, 6, 23, 0.1);
+    --shadow-hover: 0 20px 40px -15px rgba(48, 176, 240, 0.25);
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Font Size Dinâmico via Clamp */
+    --font-base: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+/* Alteração de variáveis para o Modo Escuro */
+body.dark-mode {
+    --bg-body: var(--color-preto);
+    --bg-card: var(--color-azul-metalico);
+    --text-primary: var(--color-branco);
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-suave: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset Geral e Acessibilidade de Foco */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.7;
+    transition: var(--transicao);
+}
+
+input:focus, textarea:focus, button:focus {
+    outline: 3px solid var(--color-azul-celeste);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   CAIXA FLUTUANTE DE ACESSIBILIDADE
+   ========================================================================== */
+.acessibilidade-container {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-azul-profundo);
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.acessibilidade-container button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--color-azul-celeste);
+    background: transparent;
+    color: var(--color-branco);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao);
+}
+
+.acessibilidade-container button:hover {
+    background-color: var(--color-azul-celeste);
+    color: var(--color-azul-profundo);
+    transform: scale(1.1);
+}
+
+.acessibilidade-container .btn-parar-inativo {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   HEADER / CABEÇALHO
+   ========================================================================== */
+.main-header {
+    background-color: var(--color-azul-profundo);
+    color: var(--color-branco);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--color-azul-metalico);
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--color-verde-sustentavel);
+}
+
+.tag-ano {
+    background: linear-gradient(135deg, var(--color-amarelo-ouro), var(--color-color-amarelo-ouro));
+    color: var(--color-preto);
+    padding: 4px 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: var(--color-amarelo-ouro);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+    position: relative;
+    background-color: var(--color-azul-profundo);
+    color: var(--color-branco);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 5%;
+    overflow: hidden;
+}
+
+/* Detalhe futurista de fundo simulando grade tecnológica */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(48, 176, 240, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(48, 176, 240, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    color: var(--color-verde-sustentavel);
+    border: 1px solid var(--color-verde-sustentavel);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--color-branco);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.btn-hero {
+    display: inline-block;
+    background-color: var(--color-azul-celeste);
+    color: var(--color-azul-profundo);
+    padding: 14px 32px;
+    border-radius: var(--radius-padrao);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transicao);
+    box-shadow: 0 4px 14px rgba(48, 176, 240, 0.4);
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--color-branco);
+}
+
+/* ==========================================================================
+   GRID PRINCIPAL RESPONSIVO (Layout Assimétrico)
+   ========================================================================== */
+.main-layout {
+    width: 90%;
+    max-width: 1400px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr);
+    gap: 40px;
+}
+
+@media (min-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   COLUNA DE CONTEÚDO (ARTIGO)
+   ========================================================================== */
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.texto-destaque {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    border-left: 5px solid var(--color-verde-sustentavel);
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: var(--font-base);
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+strong {
+    color: var(--color-azul-celeste);
+}
+
+/* Caixa de Citação - Destaque Ouro */
+.quote-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-right: 6px solid var(--color-amarelo-ouro);
+    padding: 30px;
+    border-radius: var(--radius-padrao);
+    box-shadow: var(--shadow-suave);
+    margin: 20px 0;
+}
+
+.quote-box p {
+    font-style: italic;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.titulo-secao {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--text-primary);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   COMPONENTE DE IMAGEM PREMIUM (Requisitos Estritos)
+   ========================================================================== */
+.imagem {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-padrao);
+    box-shadow: var(--shadow-suave);
+    border: 1px solid var(--border-color);
+    background-color: var(--color-azul-metalico);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao);
+}
+
+.imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transicao);
+    /* Fallback visual caso a imagem física não exista imediatamente */
+    filter: brightness(0.9);
+}
+
+/* Efeito Hover Suave Premium */
+.imagem:hover {
+    transform: translateY(-5px);
+    box
